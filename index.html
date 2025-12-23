@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camerata Gothia - Göteborgs Stråkorkester</title>
+    
+    <!-- SEO & Social Sharing Metadata -->
+    <meta name="description" content="Camerata Gothia är en inspirerande stråkensemble i Göteborg för unga talanger som vill utvecklas musikaliskt.">
+    <meta property="og:title" content="Camerata Gothia - Göteborgs Stråkorkester">
+    <meta property="og:description" content="Spelglädje och gemenskap för unga stråkmusiker i Göteborg. Läs om våra konserter och hur du kan börja spela med oss.">
+    <meta property="og:image" content="img/camerata1.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -94,7 +103,7 @@
                 <ul class="flex items-center gap-6 m-0 p-0 list-none">
                     <li><a href="#hem" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Hem</a></li>
                     <li><a href="#aktuellt" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Aktuellt</a></li>
-                    <li><a href="#om" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Om oss</a></li>
+                    <li><a href="#om" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Om orkestern</a></li>
                     <li><a href="#galleri" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Galleri</a></li>
                     <li><a href="#medlem" class="font-semibold text-sm text-dark hover:text-primary transition-colors">Medlemsinfo</a></li>
                     <li class="flex items-center gap-4 ml-2">
@@ -122,7 +131,7 @@
             <ul class="flex flex-col p-4 gap-4 list-none text-center">
                 <li><a href="#hem" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Hem</a></li>
                 <li><a href="#aktuellt" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Aktuellt</a></li>
-                <li><a href="#om" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Om oss</a></li>
+                <li><a href="#om" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Om orkestern</a></li>
                 <li><a href="#galleri" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Galleri</a></li>
                 <li><a href="#medlem" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Medlemsinfo</a></li>
                 <li><a href="#kontakt" class="mobile-link block bg-primary text-white border-2 border-primary rounded-full py-3 font-bold text-sm uppercase shadow-md">Börja Spela</a></li>
@@ -137,7 +146,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80 z-20"></div>
             
             <div class="max-w-3xl relative z-30 pt-8 flex flex-col items-center">
-                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-2xl tracking-wide uppercase">Spelglädje för unga stråkmusiker</h1>
+                <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-2xl tracking-wide uppercase">Spelglädje för unga stråkmusiker</h1>
                 <p class="text-lg md:text-xl mb-10 font-medium text-gray-100 max-w-xl mx-auto leading-relaxed drop-shadow-md">Välkommen till Camerata Gothia. En orkester i Göteborg där musiken och gemenskapen står i centrum.</p>
                 <div class="flex flex-col sm:flex-row gap-5 justify-center">
                     <a href="#aktuellt" class="px-10 py-4 bg-primary text-white border-2 border-primary rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-primary-dark hover:scale-105 shadow-xl">Nästa Konsert</a>
@@ -156,7 +165,7 @@
             <div class="max-w-4xl mx-auto text-center relative z-10">
                 <span class="block text-xs md:text-sm uppercase tracking-[0.4em] mb-4 font-bold opacity-80">Kommande Konsert</span>
                 
-                <h2 class="font-serif text-5xl md:text-7xl font-bold mb-8 tracking-wider uppercase">Vinterkonsert</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-7xl font-bold mb-8 tracking-wider uppercase">Vinterkonsert</h2>
                 
                 <div class="max-w-2xl mx-auto mb-10">
                     <p class="text-lg md:text-xl leading-relaxed uppercase tracking-widest font-light italic">
@@ -465,24 +474,24 @@
     </button>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4">
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4 select-none touch-none">
         <!-- Close Button -->
         <button id="lightbox-close" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 z-[110]" aria-label="Stäng bildvisare">
             <i data-lucide="x" class="w-10 h-10"></i>
         </button>
 
         <!-- Navigation Buttons -->
-        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all p-4 z-[110] bg-white/5 hover:bg-white/10 rounded-full" aria-label="Föregående bild">
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all p-4 z-[110] bg-white/5 hover:bg-white/10 rounded-full md:block" aria-label="Föregående bild">
             <i data-lucide="chevron-left" class="w-12 h-12"></i>
         </button>
-        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all p-4 z-[110] bg-white/5 hover:bg-white/10 rounded-full" aria-label="Nästa bild">
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all p-4 z-[110] bg-white/5 hover:bg-white/10 rounded-full md:block" aria-label="Nästa bild">
             <i data-lucide="chevron-right" class="w-12 h-12"></i>
         </button>
 
         <!-- Content -->
-        <div class="max-w-6xl w-full flex flex-col items-center gap-6 relative group select-none">
-            <img id="lightbox-img" src="" alt="Förstorad bild" class="max-h-[80vh] max-w-full object-contain shadow-2xl rounded-lg cursor-default">
-            <div class="text-center px-4">
+        <div class="max-w-6xl w-full flex flex-col items-center gap-6 relative group select-none pointer-events-none">
+            <img id="lightbox-img" src="" alt="Förstorad bild" class="max-h-[80vh] max-w-full object-contain shadow-2xl rounded-lg cursor-default pointer-events-auto">
+            <div class="text-center px-4 pointer-events-auto">
                 <p id="lightbox-caption" class="text-white font-serif text-xl md:text-2xl font-bold tracking-wide uppercase"></p>
                 <p id="lightbox-counter" class="text-white/40 text-xs mt-2 font-bold tracking-[0.3em] uppercase"></p>
             </div>
@@ -529,6 +538,8 @@
         const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
 
         let currentImageIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         const updateLightboxContent = () => {
             const currentItem = galleryItems[currentImageIndex];
@@ -577,9 +588,30 @@
         lightboxPrev.addEventListener('click', prevImage);
         lightboxNext.addEventListener('click', nextImage);
 
+        // Swipe Detection
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            const swipeDistance = touchEndX - touchStartX;
+            const threshold = 50; // Minimum distance to register as swipe
+            
+            if (swipeDistance < -threshold) {
+                nextImage();
+            } else if (swipeDistance > threshold) {
+                prevImage();
+            }
+        };
+
         // Click outside image to close (if not clicking navigation)
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target.closest('#lightbox-close')) {
+            if (e.target === lightbox || e.target.id === 'lightbox-close') {
                 closeLightbox();
             }
         });

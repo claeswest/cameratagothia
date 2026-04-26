@@ -136,6 +136,29 @@
             pointer-events: auto;
             transform: translateY(0);
         }
+        /* Mobile menu animation */
+        #mobile-nav {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+        #mobile-nav.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .scroll-indicator { animation: none; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-dark bg-white min-h-screen flex flex-col relative">
@@ -176,8 +199,8 @@
         </div>
 
         <!-- Mobile Nav Dropdown -->
-        <nav id="mobile-nav" class="hidden md:hidden bg-white border-t border-gray-100 pb-6 shadow-xl">
-            <ul class="flex flex-col p-4 gap-4 list-none text-center">
+        <nav id="mobile-nav" class="md:hidden bg-white border-t border-gray-100 shadow-xl">
+            <ul class="flex flex-col p-4 pb-6 gap-4 list-none text-center">
                 <li><a href="#hem" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Hem</a></li>
                 <li><a href="#aktuellt" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Aktuellt</a></li>
                 <li><a href="#om" class="mobile-link block py-2 font-semibold text-base text-dark hover:text-primary">Om orkestern</a></li>
@@ -234,7 +257,7 @@
                     </div>
                 </div>
                 <div class="mt-12 flex justify-center">
-                    <a href="img/konsert_gatenhielmska_flyer.jpg" target="_blank" class="flex items-center gap-3 border-2 border-poster-cream px-8 py-3 rounded-full hover:bg-poster-cream hover:text-poster-blue transition-all font-bold uppercase text-xs tracking-[0.2em] shadow-lg">
+                    <a id="poster-btn" href="img/konsert_gatenhielmska_flyer.jpg" data-caption="Vinterkonsert – Konsertaffisch" class="flex items-center gap-3 border-2 border-poster-cream px-8 py-3 rounded-full hover:bg-poster-cream hover:text-poster-blue transition-all font-bold uppercase text-xs tracking-[0.2em] shadow-lg">
                         <i data-lucide="image" class="w-4 h-4"></i>
                         Visa Konsertaffisch
                     </a>
@@ -417,9 +440,20 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
         const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
         let currentIndex = 0;
         let startX = 0;
+        let isNavigable = true;
+
+        const showLightbox = () => {
+            lightboxPrev.style.display = isNavigable ? '' : 'none';
+            lightboxNext.style.display = isNavigable ? '' : 'none';
+            lightbox.classList.remove('hidden');
+            setTimeout(() => lightbox.classList.add('visible'), 10);
+            document.body.style.overflow = 'hidden';
+        };
 
         const updateLightbox = () => {
             const item = galleryItems[currentIndex];
@@ -430,12 +464,20 @@
         galleryItems.forEach((item, i) => {
             item.onclick = () => {
                 currentIndex = i;
+                isNavigable = true;
                 updateLightbox();
-                lightbox.classList.remove('hidden');
-                setTimeout(() => lightbox.classList.add('visible'), 10);
-                document.body.style.overflow = 'hidden';
+                showLightbox();
             };
         });
+
+        document.getElementById('poster-btn').onclick = (e) => {
+            e.preventDefault();
+            const btn = e.currentTarget;
+            isNavigable = false;
+            lightboxImg.src = btn.getAttribute('href');
+            lightboxCaption.textContent = btn.getAttribute('data-caption');
+            showLightbox();
+        };
 
         const closeL = () => {
             lightbox.classList.remove('visible');
@@ -443,21 +485,22 @@
         };
 
         document.getElementById('lightbox-close').onclick = closeL;
-        document.getElementById('lightbox-next').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % galleryItems.length; updateLightbox(); };
-        document.getElementById('lightbox-prev').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; updateLightbox(); };
-        
+        lightboxNext.onclick = (e) => { e.stopPropagation(); if (!isNavigable) return; currentIndex = (currentIndex + 1) % galleryItems.length; updateLightbox(); };
+        lightboxPrev.onclick = (e) => { e.stopPropagation(); if (!isNavigable) return; currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; updateLightbox(); };
+
         lightbox.ontouchstart = (e) => startX = e.touches[0].clientX;
         lightbox.ontouchend = (e) => {
+            if (!isNavigable) return;
             let diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) diff > 0 ? document.getElementById('lightbox-next').click() : document.getElementById('lightbox-prev').click();
+            if (Math.abs(diff) > 50) diff > 0 ? lightboxNext.click() : lightboxPrev.click();
         };
         lightbox.onclick = (e) => { if(e.target === lightbox) closeL(); };
 
         document.addEventListener('keydown', (e) => {
             if (lightbox.classList.contains('hidden')) return;
             if (e.key === 'Escape') closeL();
-            else if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
-            else if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+            else if (isNavigable && e.key === 'ArrowRight') lightboxNext.click();
+            else if (isNavigable && e.key === 'ArrowLeft') lightboxPrev.click();
         });
 
         // Toggle About
@@ -469,13 +512,20 @@
         };
 
         // Mobile Menu
-        document.getElementById('mobile-menu-btn').onclick = () => {
-            const nav = document.getElementById('mobile-nav');
-            const isH = nav.classList.toggle('hidden');
-            document.querySelector('#mobile-menu-btn i').setAttribute('data-lucide', isH ? 'menu' : 'x');
+        const mobileNav = document.getElementById('mobile-nav');
+        const setMobileIcon = (open) => {
+            const icon = document.querySelector('#mobile-menu-btn svg, #mobile-menu-btn i');
+            if (icon) icon.setAttribute('data-lucide', open ? 'x' : 'menu');
             lucide.createIcons();
         };
-        document.querySelectorAll('.mobile-link').forEach(l => l.onclick = () => document.getElementById('mobile-nav').classList.add('hidden'));
+        document.getElementById('mobile-menu-btn').onclick = () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            setMobileIcon(isOpen);
+        };
+        document.querySelectorAll('.mobile-link').forEach(l => l.onclick = () => {
+            mobileNav.classList.remove('open');
+            setMobileIcon(false);
+        });
 
         // Scroll-reveal
         const revealObserver = new IntersectionObserver((entries) => {

@@ -14,6 +14,7 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#6a1b1b">
+    <link rel="icon" type="image/png" href="img/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,16 +247,24 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="group relative overflow-hidden rounded-2xl shadow-lg h-80 bg-gray-200 cursor-pointer gallery-item" data-caption="Julkonsert 2024">
-                        <img src="img/camerata1.jpg" alt="Julkonsert" class="w-full h-full object-cover">
+                        <img src="img/camerata1.jpg" alt="Julkonsert" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <p class="absolute bottom-5 left-5 right-5 text-white font-serif text-lg uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">Julkonsert 2024</p>
                     </div>
                     <div class="group relative overflow-hidden rounded-2xl shadow-lg h-80 bg-gray-200 cursor-pointer gallery-item" data-caption="Festival 2025">
-                        <img src="img/camerata2.jpg" alt="Festival" class="w-full h-full object-cover">
+                        <img src="img/camerata2.jpg" alt="Festival" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <p class="absolute bottom-5 left-5 right-5 text-white font-serif text-lg uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">Festival 2025</p>
                     </div>
                     <div class="group relative overflow-hidden rounded-2xl shadow-lg h-80 bg-gray-200 cursor-pointer gallery-item" data-caption="Frihamnskyrkan 2025">
-                        <img src="img/camerata3.jpg" alt="Konsert" class="w-full h-full object-cover">
+                        <img src="img/camerata3.jpg" alt="Konsert" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <p class="absolute bottom-5 left-5 right-5 text-white font-serif text-lg uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">Frihamnskyrkan 2025</p>
                     </div>
                     <div class="group relative overflow-hidden rounded-2xl shadow-lg h-80 bg-gray-200 cursor-pointer gallery-item" data-caption="Kompani 415">
-                        <img src="img/camerata4.jpg" alt="Sommar" class="w-full h-full object-cover">
+                        <img src="img/camerata4.jpg" alt="Sommar" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <p class="absolute bottom-5 left-5 right-5 text-white font-serif text-lg uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">Kompani 415</p>
                     </div>
                 </div>
             </div>
@@ -267,19 +276,19 @@
                 <h2 class="font-serif text-4xl text-primary font-bold mb-6 uppercase">Medlemsinfo</h2>
 <div class="w-24 h-1 bg-primary/20 mx-auto mb-8"></div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-10 rounded-2xl shadow-sm">
+                    <div class="bg-white p-10 rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <i data-lucide="clock" class="text-primary w-8 h-8 mx-auto mb-4"></i>
                         <h3 class="font-bold mb-2">Tid & Plats</h3>
                         <p>Måndagar 19.00 - 20.00</p>
                         <p class="text-sm text-light">ISGR Molinsgatan</p>
                     </div>
-                    <div class="bg-white p-10 rounded-2xl shadow-sm">
+                    <div class="bg-white p-10 rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <i data-lucide="calendar" class="text-primary w-8 h-8 mx-auto mb-4"></i>
                         <h3 class="font-bold mb-2">Kalender</h3>
                         <p>15 Jan: Terminsstart</p>
                         <p>17 Jan: Vinterkonsert</p>
                     </div>
-                    <div class="bg-white p-10 rounded-2xl shadow-sm">
+                    <div class="bg-white p-10 rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <i data-lucide="wallet" class="text-primary w-8 h-8 mx-auto mb-4"></i>
                         <h3 class="font-bold mb-2">Avgift</h3>
                         <p>500 kr / termin</p>
@@ -308,7 +317,7 @@
                 <p class="text-[0.65rem] uppercase tracking-[0.4em] text-white/90 mb-10 font-bold">I samarbete med</p>
                 <div class="flex flex-wrap justify-center gap-12 md:gap-24 items-center">
                     <a href="https://www.suzukigbg.se/" target="_blank" class="transition-all hover:scale-105 inline-block" title="Besök Göteborgs Suzukiförening (öppnas i ny flik)">
-                        <img src="img/gbgsuzuki_logo.png" alt="Göteborgs Suzukiförening" class="h-28 md:h-40 w-auto object-contain">
+                        <img src="img/gbgsuzuki_logo.png" alt="Göteborgs Suzukiförening" loading="lazy" class="h-28 md:h-40 w-auto object-contain">
                     </a>
                 </div>
             </div>
@@ -337,9 +346,9 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4 select-none touch-none">
-        <button id="lightbox-close" class="absolute top-6 right-6 text-white/50 hover:text-white p-2 z-[110]"><i data-lucide="x" class="w-10 h-10"></i></button>
-        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white p-4 z-[110] hidden md:block"><i data-lucide="chevron-left" class="w-12 h-12"></i></button>
-        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white p-4 z-[110] hidden md:block"><i data-lucide="chevron-right" class="w-12 h-12"></i></button>
+        <button id="lightbox-close" aria-label="Stäng" class="absolute top-6 right-6 text-white/50 hover:text-white p-2 z-[110]"><i data-lucide="x" class="w-10 h-10"></i></button>
+        <button id="lightbox-prev" aria-label="Föregående bild" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white p-4 z-[110] hidden md:block"><i data-lucide="chevron-left" class="w-12 h-12"></i></button>
+        <button id="lightbox-next" aria-label="Nästa bild" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white p-4 z-[110] hidden md:block"><i data-lucide="chevron-right" class="w-12 h-12"></i></button>
         <div class="max-w-5xl w-full flex flex-col items-center gap-6 pointer-events-none">
             <img id="lightbox-img" src="" class="max-h-[80vh] max-w-full object-contain shadow-2xl rounded pointer-events-auto">
             <p id="lightbox-caption" class="text-white font-serif text-xl uppercase tracking-widest pointer-events-auto"></p>
@@ -389,6 +398,13 @@
             if (Math.abs(diff) > 50) diff > 0 ? document.getElementById('lightbox-next').click() : document.getElementById('lightbox-prev').click();
         };
         lightbox.onclick = (e) => { if(e.target === lightbox) closeL(); };
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeL();
+            else if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+            else if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+        });
 
         // Toggle About
         document.getElementById('toggle-about').onclick = function() {

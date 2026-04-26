@@ -35,6 +35,7 @@
                         grey: '#f4f4f4',
                         facebook: '#1877F2',
                         'poster-blue': '#2b334d',
+                        'poster-green': '#3a5a40',
                         'poster-cream': '#f0ebd8'
                     },
                     fontFamily: {
@@ -231,16 +232,25 @@
         </section>
 
         <!-- Aktuellt Section -->
-        <section id="aktuellt" class="reveal bg-poster-blue py-20 px-5 text-poster-cream scroll-mt-20 relative overflow-hidden">
+        <section id="aktuellt" class="reveal bg-poster-green py-20 px-5 text-poster-cream scroll-mt-20 relative overflow-hidden">
+            <div class="absolute top-0 left-0 opacity-10 w-48 md:w-72 pointer-events-none -translate-x-1/4 -translate-y-1/4">
+                <i data-lucide="leaf" class="w-full h-full"></i>
+            </div>
             <div class="absolute bottom-0 right-0 opacity-10 w-64 md:w-96 pointer-events-none translate-x-1/4 translate-y-1/4">
-                <i data-lucide="music" class="w-full h-full"></i>
+                <i data-lucide="flower-2" class="w-full h-full"></i>
+            </div>
+            <div class="absolute top-1/2 right-8 opacity-[0.07] w-24 md:w-32 pointer-events-none hidden md:block">
+                <i data-lucide="sprout" class="w-full h-full"></i>
             </div>
             <div class="max-w-4xl mx-auto text-center relative z-10">
                 <span class="block text-xs md:text-sm uppercase tracking-[0.4em] mb-4 font-bold opacity-80">Kommande Konsert</span>
-                <h2 class="font-serif text-3xl sm:text-4xl md:text-7xl font-bold mb-8 tracking-wider uppercase">Vinterkonsert</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-7xl font-bold mb-8 tracking-wider uppercase">Vårkonsert</h2>
                 <div class="max-w-2xl mx-auto mb-10">
                     <p class="text-lg md:text-xl leading-relaxed uppercase tracking-widest font-light italic">
-                        Stråkorkestern Camerata Gothia bjuder på jullåtar från klassisk repertoar till filmmusik
+                        Vi välkomnar våren med ett färgsprakande program – från klassiska mästerverk till lyriska stråktoner som fångar årstidens ljus.
+                    </p>
+                    <p class="mt-6 text-xs md:text-sm uppercase tracking-[0.3em] opacity-70">
+                        <span class="font-light">I samarbete med</span> <span class="font-serif normal-case tracking-normal text-base md:text-lg italic font-bold">Orkestern Lilla Noten</span>
                     </p>
                 </div>
                 <div class="poster-line"><div class="poster-square"></div></div>
@@ -248,19 +258,13 @@
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex items-center gap-3 mb-2">
                             <i data-lucide="calendar" class="w-6 h-6"></i>
-                            <span class="text-2xl font-bold uppercase tracking-tighter">17 Januari | Kl 18</span>
+                            <span class="text-2xl font-bold uppercase tracking-tighter">10 Maj | Kl 16</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-center justify-center gap-2 text-lg opacity-90">
                         <i data-lucide="map-pin" class="w-6 h-6"></i>
-                        <span class="uppercase tracking-widest text-center max-w-sm px-4">Gathenhielmska Huset vid Stigberget</span>
+                        <span class="uppercase tracking-widest text-center max-w-sm px-4">Redbergskyrkan</span>
                     </div>
-                </div>
-                <div class="mt-12 flex justify-center">
-                    <a id="poster-btn" href="img/konsert_gatenhielmska_flyer.jpg" data-caption="Vinterkonsert – Konsertaffisch" class="flex items-center gap-3 border-2 border-poster-cream px-8 py-3 rounded-full hover:bg-poster-cream hover:text-poster-blue transition-all font-bold uppercase text-xs tracking-[0.2em] shadow-lg">
-                        <i data-lucide="image" class="w-4 h-4"></i>
-                        Visa Konsertaffisch
-                    </a>
                 </div>
             </div>
         </section>
@@ -283,6 +287,10 @@
                         <div class="text-center">
                             <span class="block text-primary font-bold text-[0.7rem] uppercase tracking-widest mb-1">Konstnärlig Ledare</span>
                             <h3 class="font-serif text-3xl font-bold text-dark mb-2">Emanuel Kling</h3>
+                            <a class="email-link inline-flex items-center gap-2 text-sm text-light hover:text-primary transition-colors" data-u="dirigent" data-d="cameratagothia.se" data-show href="#" aria-label="Skicka e-post till dirigenten">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span class="email-text">[skyddad e-post]</span>
+                            </a>
                         </div>
                     </div>
                     <div class="w-full md:w-2/3 space-y-6">
@@ -357,8 +365,8 @@
                     <div class="bg-white p-10 rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <i data-lucide="calendar" class="text-primary w-8 h-8 mx-auto mb-4"></i>
                         <h3 class="font-bold mb-2">Kalender</h3>
-                        <p>15 Jan: Terminsstart</p>
-                        <p>17 Jan: Vinterkonsert</p>
+                        <p>10 Maj: Vårkonsert</p>
+                        <p class="text-sm text-light">Redbergskyrkan, kl. 16</p>
                     </div>
                     <div class="bg-white p-10 rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <i data-lucide="wallet" class="text-primary w-8 h-8 mx-auto mb-4"></i>
@@ -377,7 +385,7 @@
             <p class="text-lg text-light mb-10 max-w-2xl mx-auto leading-relaxed">
                 Spelar du violin, viola, cello eller kontrabas och har god notläsningsvana? Vi söker alltid ambitiösa musiker som vill utvecklas tillsammans med oss. För att trivas i orkestern bör du ha spelat i några år och ha en vilja att satsa på musiken. Skicka ett mail till oss så berättar vi mer!
             </p>
-            <a href="mailto:styrelsen@cameratagothia.se" class="inline-block bg-primary text-white px-12 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-primary-dark transition-all shadow-xl">Kontakta oss</a>
+            <a class="email-link inline-block bg-primary text-white px-12 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-primary-dark transition-all shadow-xl" data-u="info" data-d="cameratagothia.se" href="#">Kontakta oss</a>
         </section>
     </main>
 
@@ -409,7 +417,7 @@
                 </div>
                 <div>
                     <p class="text-primary-vibrant font-bold uppercase mb-2">Kontakt</p>
-                    <a href="mailto:styrelsen@cameratagothia.se" class="hover:underline">styrelsen@cameratagothia.se</a>
+                    <a class="email-link hover:underline" data-u="info" data-d="cameratagothia.se" data-show href="#">[skyddad e-post]</a>
                 </div>
             </div>
             <p class="text-xs text-gray-500 uppercase tracking-widest">&copy; <span id="current-year"></span> Camerata Gothia</p>
@@ -435,6 +443,16 @@
     <script>
         lucide.createIcons();
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Email obfuscation — assembled at runtime so it's not in the raw HTML
+        document.querySelectorAll('.email-link').forEach(el => {
+            const addr = el.dataset.u + '\u0040' + el.dataset.d;
+            el.href = 'mailto:' + addr;
+            if (el.hasAttribute('data-show')) {
+                const target = el.querySelector('.email-text') || el;
+                target.textContent = addr;
+            }
+        });
 
         // Lightbox logic with swipe
         const lightbox = document.getElementById('lightbox');
@@ -470,14 +488,17 @@
             };
         });
 
-        document.getElementById('poster-btn').onclick = (e) => {
-            e.preventDefault();
-            const btn = e.currentTarget;
-            isNavigable = false;
-            lightboxImg.src = btn.getAttribute('href');
-            lightboxCaption.textContent = btn.getAttribute('data-caption');
-            showLightbox();
-        };
+        const posterBtn = document.getElementById('poster-btn');
+        if (posterBtn) {
+            posterBtn.onclick = (e) => {
+                e.preventDefault();
+                const btn = e.currentTarget;
+                isNavigable = false;
+                lightboxImg.src = btn.getAttribute('href');
+                lightboxCaption.textContent = btn.getAttribute('data-caption');
+                showLightbox();
+            };
+        }
 
         const closeL = () => {
             lightbox.classList.remove('visible');

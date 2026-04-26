@@ -124,6 +124,18 @@
         header img.site-logo, header .header-bar {
             transition: all 0.3s ease;
         }
+        /* Back-to-top button */
+        .scroll-top-btn {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(8px);
+        }
+        .scroll-top-btn.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="font-sans text-dark bg-white min-h-screen flex flex-col relative">
@@ -381,6 +393,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button id="scroll-top" aria-label="Tillbaka till toppen" class="scroll-top-btn fixed bottom-6 right-6 z-50 bg-primary text-white p-3 rounded-full shadow-xl hover:bg-primary-dark">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
     <!-- Lightbox -->
     <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4 select-none touch-none">
         <button id="lightbox-close" aria-label="Stäng" class="absolute top-6 right-6 text-white/50 hover:text-white p-2 z-[110]"><i data-lucide="x" class="w-10 h-10"></i></button>
@@ -471,11 +488,31 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Header shrink on scroll
+        // Header shrink on scroll + back-to-top visibility
         const header = document.querySelector('header');
-        const onScroll = () => header.classList.toggle('shrink', window.scrollY > 50);
+        const scrollTopBtn = document.getElementById('scroll-top');
+        const onScroll = () => {
+            header.classList.toggle('shrink', window.scrollY > 50);
+            scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+        };
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+        scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Scrollspy: highlight active nav link (skip CTA buttons)
+        const navLinks = document.querySelectorAll('header nav a[href^="#"]:not(.mobile-link.bg-primary):not(.bg-primary)');
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const id = '#' + entry.target.id;
+                navLinks.forEach(link => {
+                    const match = link.getAttribute('href') === id;
+                    link.classList.toggle('text-primary', match);
+                    link.classList.toggle('text-dark', !match);
+                });
+            });
+        }, { rootMargin: '-45% 0px -45% 0px' });
+        document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
     </script>
 </body>
 </html>

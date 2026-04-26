@@ -90,15 +90,49 @@
             border: 1px solid #f0ebd8;
             transform: rotate(45deg);
         }
+        /* Scroll-reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Hero scroll-down chevron */
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+            50% { transform: translate(-50%, 10px); opacity: 1; }
+        }
+        .scroll-indicator {
+            animation: scroll-bounce 2s ease-in-out infinite;
+        }
+        /* Header shrink on scroll */
+        header.shrink img.site-logo {
+            height: 3.5rem;
+        }
+        @media (min-width: 768px) {
+            header.shrink img.site-logo {
+                height: 5rem;
+            }
+        }
+        header.shrink .header-bar {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        header img.site-logo, header .header-bar {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="font-sans text-dark bg-white min-h-screen flex flex-col relative">
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-5 py-2 flex justify-between items-center">
+        <div class="header-bar max-w-6xl mx-auto px-5 py-2 flex justify-between items-center">
             <a href="#hem" class="flex items-center group">
-                <img src="img/logo.png" alt="Camerata Gothia Logo" class="h-20 md:h-32 w-auto object-contain transition-transform group-hover:scale-105">
+                <img src="img/logo.png" alt="Camerata Gothia Logo" class="site-logo h-20 md:h-32 w-auto object-contain transition-transform group-hover:scale-105">
             </a>
 
             <!-- Desktop Nav -->
@@ -156,10 +190,13 @@
                     <a href="#kontakt" class="px-10 py-4 bg-transparent text-white border-2 border-white rounded-full font-bold uppercase text-sm tracking-widest transition-all hover:bg-white hover:text-dark hover:scale-105 shadow-xl">Börja spela</a>
                 </div>
             </div>
+            <a href="#aktuellt" aria-label="Scrolla nedåt" class="scroll-indicator absolute bottom-6 left-1/2 z-30 text-white/80 hover:text-white">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
         </section>
 
         <!-- Aktuellt Section -->
-        <section id="aktuellt" class="bg-poster-blue py-20 px-5 text-poster-cream scroll-mt-20 relative overflow-hidden">
+        <section id="aktuellt" class="reveal bg-poster-blue py-20 px-5 text-poster-cream scroll-mt-20 relative overflow-hidden">
             <div class="absolute bottom-0 right-0 opacity-10 w-64 md:w-96 pointer-events-none translate-x-1/4 translate-y-1/4">
                 <i data-lucide="music" class="w-full h-full"></i>
             </div>
@@ -194,7 +231,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="om" class="py-24 px-5 max-w-6xl mx-auto scroll-mt-20">
+        <section id="om" class="reveal py-24 px-5 max-w-6xl mx-auto scroll-mt-20">
             <div class="text-center mb-16">
                 <h2 class="font-serif text-4xl text-primary font-bold mb-6 uppercase tracking-tight">Om Orkestern</h2>
                 <div class="w-24 h-1 bg-primary/20 mx-auto mb-8"></div>
@@ -239,7 +276,7 @@
         </section>
 
         <!-- Gallery Section -->
-        <section id="galleri" class="py-24 px-5 bg-grey scroll-mt-20">
+        <section id="galleri" class="reveal py-24 px-5 bg-grey scroll-mt-20">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="font-serif text-4xl text-primary font-bold mb-6 uppercase">Galleri</h2>
@@ -271,7 +308,7 @@
         </section>
 
         <!-- Members Section -->
-        <section id="medlem" class="bg-grey py-24 px-5 w-full border-y border-gray-200 scroll-mt-20">
+        <section id="medlem" class="reveal bg-grey py-24 px-5 w-full border-y border-gray-200 scroll-mt-20">
             <div class="max-w-6xl mx-auto text-center">
                 <h2 class="font-serif text-4xl text-primary font-bold mb-6 uppercase">Medlemsinfo</h2>
 <div class="w-24 h-1 bg-primary/20 mx-auto mb-8"></div>
@@ -299,7 +336,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="kontakt" class="py-24 px-5 max-w-4xl mx-auto text-center scroll-mt-20">
+        <section id="kontakt" class="reveal py-24 px-5 max-w-4xl mx-auto text-center scroll-mt-20">
             <h2 class="font-serif text-4xl text-primary font-bold mb-6 uppercase">Börja spela med oss</h2>
 <div class="w-24 h-1 bg-primary/20 mx-auto mb-8"></div>
             <p class="text-lg text-light mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -422,6 +459,23 @@
             lucide.createIcons();
         };
         document.querySelectorAll('.mobile-link').forEach(l => l.onclick = () => document.getElementById('mobile-nav').classList.add('hidden'));
+
+        // Scroll-reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Header shrink on scroll
+        const header = document.querySelector('header');
+        const onScroll = () => header.classList.toggle('shrink', window.scrollY > 50);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
     </script>
 </body>
 </html>
